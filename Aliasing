@@ -1,0 +1,24 @@
+/*
+Aliasing
+*/
+
+SELECT FirstName + ' ' + LastName AS FullName
+FROM EmployeeDemographics
+
+SELECT Avg(Age) AS AvgAge
+FROM EmployeeDemographics
+
+SELECT Demo.EmployeeID
+FROM EmployeeDemographics As Demo
+
+SELECT Demo.EmployeeID, Sal.Salary
+FROM EmployeeDemographics As Demo
+Join EmployeeSalary As Sal
+ON Demo.EmployeeID = Sal.EmployeeID
+
+SELECT a.EmployeeID, a.FirstName, b.JobTitle, c.Age
+FROM EmployeeDemographics a
+Left Join EmployeeSalary b
+ON a.EmployeeID = b.EmployeeID
+Left Join WareHouseEmployeeDemographics c
+ON a.EmployeeID = c.EmployeeID
