@@ -1,0 +1,43 @@
+/*
+Case Statement
+*/
+
+SELECT FirstName, LastName, Age,
+Case
+When Age > 30 Then 'Old'
+Else 'Young'
+End
+From EmployeeDemographics
+WHERE Age Is NOT NULL
+Order by Age
+
+SELECT FirstName, LastName, Age,
+Case
+When Age > 30 Then 'Old'
+When Age Between 27 and 30 Then 'Young'
+Else 'Baby'
+End
+From EmployeeDemographics
+WHERE Age Is NOT NULL
+Order by Age
+
+SELECT FirstName, LastName, Age,
+Case
+When Age > 30 Then 'Old'
+When Age = 38 Then 'Stanley'
+Else 'Baby'
+End
+From EmployeeDemographics
+WHERE Age Is NOT NULL
+Order by Age
+
+SELECT FirstName, LastName, JobTitle, Salary,
+Case
+When JobTitle = 'Salesman' Then Salary + (Salary * .10)
+When JobTitle = 'Accountant' Then Salary + (Salary * .05)
+When JobTitle = 'HR' Then Salary + (Salary * .000001)
+Else Salary + (Salary *.03)
+End AS  SalaryAfterRaise
+From EmployeeDemographics
+Join dbo.EmployeeSalary
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
