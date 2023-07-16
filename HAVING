@@ -1,0 +1,11 @@
+/*
+HAVING
+*/
+
+SELECT JobTitle, Avg(Salary)
+From EmployeeDemographics
+Join EmployeeSalary
+On EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+Group by JobTitle
+Having Avg(Salary)> 45000
+Order by Avg(Salary)
